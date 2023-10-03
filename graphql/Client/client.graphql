@@ -4,6 +4,7 @@ extend type Query{
 
 extend type Mutation {
     createClient(name: String!) : ClientT! @validator(class: "App\\GraphQL\\Validators\\CreateClientValidator")
+    # createClient(name: String!) : Int! 
 }
 
 "DATA CLIENT"
