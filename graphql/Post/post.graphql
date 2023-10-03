@@ -1,0 +1,19 @@
+extend type Query {
+    # posts(id: ID): [PostM!]! @field(resolver: "App\\GraphQL\\Queries\\PostQuery@getPosts")
+    posts(id: ID): [PostM!]!
+}
+
+extend type Mutation {
+    # createPost(title: String!) : Int! @field(resolver: "App\\GraphQL\\Mutations\\PostMutation@createPost")
+    createPost(title: String!) : PostM @validator(class: "App\\GraphQL\\Validators\\CreatePostValidator")
+
+    updatePost(id: ID!, title: String!) : [PostM]! @field(resolver: "App\\GraphQL\\Mutations\\PostMutation@updatePost")
+
+    deletePost(id: ID!) : String! @field(resolver: "App\\GraphQL\\Mutations\\PostMutation@deletePost")
+}
+
+type PostM {
+    id: ID!,
+    title: String!,
+    content: String!,
+}
