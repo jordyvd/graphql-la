@@ -4,7 +4,7 @@ namespace App\GraphQL\Queries;
 
 use Illuminate\Support\Facades\DB;
 
-final class Posts
+final class Client
 {
     /**
      * @param  null  $_
@@ -12,13 +12,9 @@ final class Posts
      */
     public function __invoke($_, array $args)
     {
-        $procedure = "call get_posts(?)";
-        $params = [
-            $args['id']
-        ];
-        $data = DB::select($procedure, $params);
+        $data = DB::table('clients')->get();
         foreach($data as $value){
-            $user = DB::table('users')->where('id', $value->author_id)->first();
+            $user = DB::table('users')->where('id', $value->created_by)->first();
             $value->user = $user;
         }
         return $data;

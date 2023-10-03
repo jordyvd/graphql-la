@@ -1,1 +1,2 @@
 #import Post/post.graphql
+#import Client/client.graphql

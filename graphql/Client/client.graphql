@@ -1,0 +1,19 @@
+extend type Query{
+    client(id: ID): [ClientT!]!
+}
+
+extend type Mutation {
+    createClient(name: String!) : ClientT! @validator(class: "App\\GraphQL\\Validators\\CreateClientValidator")
+}
+
+"DATA CLIENT"
+type ClientT{
+    id: ID!,
+    name: String!,
+    user: UserC
+}
+
+type UserC{
+    id: ID!,
+    name: String!
+}

@@ -16,4 +16,9 @@ type PostM {
     id: ID!,
     title: String!,
     content: String!,
+    user: UserP!
+}
+
+type UserP{
+    name: String!
 }

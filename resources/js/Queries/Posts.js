@@ -11,11 +11,13 @@ export function GET_POSTS(id) {
     return query;
 }
 
-export function CREATE_POST(title){
-  const query = `
+export function CREATE_POST(title) {
+    const query = `
   mutation{
-    createPost(title: ${title})
+    createPost(title: "${title}"){
+      id
+    }
   }
 `;
-  return query; 
+    return query;
 }
